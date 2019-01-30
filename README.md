@@ -24,6 +24,8 @@ OpenCV4.0于2018年11月，针对[OpenCV-Python Tutorials(4.0.0)](https://docs.o
   * [5.7. BRIEF(Binary Robust Independent Elementary Features)]( )
   * [5.8. ORB(Oriented FAST and Rotated BRIEF)]( )
   * [5.9. 特征匹配]( )
+  * [5.10. 特征匹配结合单应性去查找对象]()
+
 * [6. 视频分析]( )
   * [6.1.  Meanshift和Camshift]( )
   * [6.2. 光流]( )

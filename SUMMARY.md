@@ -24,6 +24,7 @@
   * [5.7. BRIEF \(Binary Robust Independent Elementary Features\)](5. 特征检测和描述/5.7. BRIEF %28Binary Robust Independent Elementary Features%29/README.md)
   * [5.8. ORB \(Oriented FAST and Rotated BRIEF\)](5. 特征检测和描述/5.8. ORB %28Oriented FAST and Rotated BRIEF%29/README.md)
   * [5.9. 特征匹配](5. 特征检测和描述/5.9. 特征匹配/README.md)
+  * [5.10. 特征匹配结合单应性去查找对象](5. 特征检测和描述/5.10. 特征匹配结合单应性去查找对象/README.md)
 * [6. 视频分析](6. 视频分析/README.md)
   * [6.1.  Meanshift和Camshift](6. 视频分析/6.1. Meanshift和Camshift/README.md)
   * [6.2. 光流](6. 视频分析/6.2. 光流/README.md)
