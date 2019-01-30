@@ -1,9 +1,14 @@
 # Summary
 
 * [前言](README.md)
-* [1. OpenCV简介](Chapter01-OpenCV简介/README.md)
-  * [1.1 OpenCV-Python教程介绍](Chapter01-OpenCV简介/01.01-OpenCV-Python教程介绍/README.md)
-* [2. OpenCV中的 Gui特性](Chapter02-OpenCV中的 Gui特性/README.md)
+* [1. OpenCV简介](1. OpenCV简介/README.md)
+  * [1.1 OpenCV-Python教程介绍](1. OpenCV简介/1.1. OpenCV-Python教程介绍/README.md)
+* [2. OpenCV中的 Gui特性](2. OpenCV中的 Gui特性/README.md)
+  * [2.1. 图像入门](2. OpenCV中的 Gui特性/2.1. 图像入门/README.md)
+  * [2.2. 视频入门](2. OpenCV中的 Gui特性/2.2. 视频入门/README.md)
+  * [2.3. OpenCV中的绘图功能](2. OpenCV中的 Gui特性/2.3. OpenCV中的绘图功能/README.md)
+  * [2.4. 把鼠标作为画笔](2. OpenCV中的 Gui特性/2.4. 把鼠标作为画笔/README.md)
+  * [2.5. 用滑动条做调色板](2. OpenCV中的 Gui特性/2.5. 用滑动条做调色板/README.md)
 * [3. 核心操作](Chapter03-核心操作/README.md)
 * [4. OpenCV中的图像处理](Chapter04-OpenCV中的图像处理/README.md)
 * [5. 特征检测和描述](Chapter05-特征检测和描述/README.md)
