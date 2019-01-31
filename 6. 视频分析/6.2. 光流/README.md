@@ -1,23 +1,21 @@
 ## 目标：
-本章节你需要学习以下内容:
-- 我们将了解光流的概念及 Lucas-Kanade 光流法。
-- 我们将使用cv.calcOpticalFlowPyrLK()等函数来跟踪视频中的特征点。
+- 了解光流的概念及 Lucas-Kanade 光流法。
+- 使用`cv.calcOpticalFlowPyrLK()`函数来跟踪视频中的特征点。
 
 ## 光流
-由于目标对象或者摄像机的移动造成的图像对象在连续两帧图像中的移动被称为光流。它是一个 2D 向量场，可以用来显示一个点从第一帧图像到第二帧图像之间的移动。如下图所示。
+由于目标对象或者摄像机的移动造成的图像对象在连续两帧图像中的移动被称为光流。它是一个 2D 向量场，可以用来表示一个点从第一帧图像到第二帧图像之间的移动。如下图所示。
 ![image6](https://docs.opencv.org/4.0.0/optical_flow_basic1.jpg)
 
-上图显示了一个点在连续的五帧图像间的移动。箭头表示光流场向量。光流在很多领域中都很有用：
+上图显示了一个球在连续的五帧图像间的移动。箭头表示其位移向量。光流在很多领域中都很有用：
 - 由运动重建结构
 - 视频压缩
-- 视频防抖等等
+- 视频防抖
 
 光流是基于以下假设下工作的：
-
-1. 在连续的两帧图像之间（目标对象的）像素的灰度值不改变。
+1. 在连续的两帧图像之间，目标对象的像素的灰度值不改变。
 2. 相邻像素具有相似的运动。
 
-考虑第一帧中的像素 `I(x,y,t)`，它在dt时间之后移动距离`(dx,dy)`。根据第一条假设：灰度值不变。所以我们可以得到：
+考虑第一帧中的像素 $$ I(x,y,t) $$，它在dt时间之后移动距离$$ (dx,dy) $$。根据第一条假设：灰度值不变。所以我们可以得到：
 
 $$ I(x,y,t) = I(x+dx, y+dy, t+dt) $$
 
@@ -31,22 +29,18 @@ $$ f_x = \frac{\partial f}{\partial x} \; ; \; f_y = \frac{\partial f}{\partial 
 
 $$ u = \frac{dx}{dt} \; ; \; v = \frac{dy}{dt} $$
 
-上边的等式叫做光流方程。其中 $f_x$ 和 $f_y$ 是图像梯度，同样 $f_t$ 是时间方向的梯度。但（u，v）是不知道的。我们不能在一个等式中求解两个未知数。有几个方法可以帮我们解决这个问题，其中的一个是 Lucas-Kanade 法。
+上边的公式叫做光流方程。其中 $$ f_x $$ 和 $$ f_y $$ 是图像梯度，同样 $$ f_t $$ 是时间方向的梯度。但（u，v）是不知道的。我们不能在一个等式中求解两个未知数，有几个方法可以帮我们解决这个问题，其中的一个是 Lucas-Kanade 法。
 
 ## Lucas-Kanade方法
+现在我们要使用第二条假设，邻域内的所有点都有相似的运动。LucasKanade 法就是利用一个 3x3 邻域中的 9 个点具有相同运动的这一点。这样我们就可以找到$$ (f_x, f_y, f_t) $$这 9 个点的光流方程，用它们组成一个具有两个未知数 9 个等式的方程组，这是一个约束条件过多的方程组。一个好的解决方法就是使用最小二乘拟合。下面就是求解结果：
 
-现在我们要使用第二条假设，邻域内的所有点都有相似的运动。LucasKanade 法就是利用一个 3x3 邻域中的 9 个点具有相同运动的这一点。这样我们就可以找到$(f_x, f_y, f_t)$这 9 个点的光流方程，用它们组成一个具有两个未知数 9 个等式的方程组，这是一个约束条件过多的方程组。一个好的解决方法就是使用最小二乘拟合。下面就是求解结果：
-
-$$\begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} \sum_{i}{f_{x_i}}^2 & \sum_{i}{f_{x_i} f_{y_i} } \\ \sum_{i}{f_{x_i} f_{y_i}} & \sum_{i}{f_{y_i}}^2 \end{bmatrix}^{-1} \begin{bmatrix} - \sum_{i}{f_{x_i} f_{t_i}} \\ - \sum_{i}{f_{y_i} f_{t_i}} \end{bmatrix}$$
+$$ \begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} \sum_{i}{f_{x_i}}^2 & \sum_{i}{f_{x_i} f_{y_i} } \\ \sum_{i}{f_{x_i} f_{y_i}} & \sum_{i}{f_{y_i}}^2 \end{bmatrix}^{-1} \begin{bmatrix} - \sum_{i}{f_{x_i} f_{t_i}} \\ - \sum_{i}{f_{y_i} f_{t_i}} \end{bmatrix} $$
 
 （你会发现上边的逆矩阵与 Harris 角点检测器非常相似，这说明角点很适合被用来做跟踪）
-
-从使用者的角度来看，想法很简单，我们取跟踪一些点，然后我们就会获得这些点的光流向量。但是还有一些问题。直到现在我们处理的都是很小的运动。如果有大的运动怎么办呢？图像金字塔。我们可以使用图像金字塔的顶层，此时小的运动被移除，大的运动装换成了小的运动，现在再使用 Lucas-Kanade算法，我们就会得到尺度空间上的光流。
+从使用者的角度来看，想法很简单，我们去跟踪一些点，然后我们就会获得这些点的光流向量。但是还有一些问题。直到现在我们处理的都是很小的运动。如果有大的运动怎么办呢？图像金字塔。当我们进入金字塔时，小运动被移除，大运动变成小运动。因此，通过在那里应用Lucas-Kanade，我们就会得到尺度空间上的光流。
 
 ## Lucas-KanadeOpenCV中的Lucas-Kanade光流
-
-O上述所有过程都被 OpenCV 打包成了一个函数：cv2.calcOpticalFlowPyrLK()。现在我们使用这个函数创建一个小程序来跟踪视频中的一些点。要跟踪那些点呢？我们使用函数 cv2.goodFeatureToTrack() 来确定要跟踪的点。我们首先在视频的第一帧图像中检测一些 Shi-Tomasi 角点，然后我们使用 LucasKanade 算法迭代跟踪这些角点。我们要给函数 cv2.calcOpticlaFlowPyrLK()传入前一帧图像和其中的点，以及下一帧图像。函数将返回带有状态数的点，如果状态数是 1，那说明在下一帧图像中找到了这个点（上一帧中角点），如果状态数是 0，就说明没有在下一帧图像中找到这个点。我们再把这些点作为参数传给函数，如此迭代下去实现跟踪。代码如下：
-
+上述所有过程都被 OpenCV 打包成了一个函数`cv2.calcOpticalFlowPyrLK()`。现在我们使用这个函数创建一个小程序来跟踪视频中的一些点。我们使用函数 `cv2.goodFeatureToTrack() `来确定要跟踪的点。我们首先在视频的第一帧图像中检测一些 Shi-Tomasi 角点，然后我们使用 LucasKanade 算法迭代跟踪这些角点。我们要给函数` cv2.calcOpticlaFlowPyrLK()`传入前一帧图像和其中的点，以及下一帧图像。函数将返回带有状态数的点，如果状态数是 1，那说明在下一帧图像中找到了这个点（上一帧中角点），如果状态数是 0，就说明没有在下一帧图像中找到这个点。我们再把这些点作为参数传给函数，如此迭代下去实现跟踪。代码如下：
 ```python
 import numpy as np
 import cv2 as cv
@@ -98,30 +92,28 @@ while(1):
     k = cv.waitKey(30) & 0xff
     if k == 27:
         break
-        
+    
     # Now update the previous frame and previous points
     old_gray = frame_gray.copy()
     p0 = good_new.reshape(-1,1,2)
-    
+
 cv.destroyAllWindows()
 cap.release()
 ```
 
-（(上面的代码没有对返回角点的正确性进行检查。图像中的一些特征点甚至在丢失以后，光流还会找到一个预期相似的点。所以为了实现稳定的跟踪，我们应该每个一定间隔就要进行一次角点检测。OpenCV 的官方示例中带有这样一个例子，它是每 5 帧进行一个特征点检测。它还对光流点使用反向检测来选取好的点进行跟踪。示例为/samples/python2/lk_track.py)
+(上面的代码没有对返回角点的正确性进行检查。图像中的一些特征点甚至在丢失以后，光流还会找到一个预期相似的点。所以为了实现稳定的跟踪，我们应该每个一定间隔就要进行一次角点检测。OpenCV 的官方示例中带有这样一个例子，它是每 5 帧进行一个特征点检测。它还对光流点使用反向检测来选取好的点进行跟踪。示例为/samples/python2/lk_track.py)
 
 结果如下图所示：
-
 ![image7](https://docs.opencv.org/4.0.0/opticalflow_lk.jpg)
 
 ## OpenCV中的密集光流
-
-Lucas-Kanade 法是计算一些特征点的光流（我们上面的例子使用的是Shi-Tomasi 算法检测到的角点）。OpenCV 还提供了一种计算稠密光流的方法。它会图像中的所有点的光流。这是基于 Gunner_Farneback 的算法（2003 年）。
-
+Lucas-Kanade 法是计算稀疏特征集的光流（上面的例子使用Shi-Tomasi 算法检测角点）。OpenCV 还提供了一种计算稠密光流的方法，它会计算图像中的所有点的光流。这是基于 Gunner_Farneback 的算法，2003年Gunner Farneback在“Two-Frame Motion Estimation Based on Polynomial Expansion”中对该算法进行了解释。
 下面的例子就是使用上面的算法计算稠密光流。结果是一个带有光流向量（u，v）的双通道数组。通过计算我们能得到光流的大小和方向。我们使用颜色对结果进行编码以便于更好的观察。方向对应于 H（Hue）通道，大小对应于 V（Value）通道。代码如下：
 
 ```python
 import cv2 as cv
 import numpy as np
+
 cap = cv.VideoCapture("vtest.avi")
 
 ret, frame1 = cap.read()
@@ -148,7 +140,7 @@ while(1):
         cv.imwrite('opticalfb.png',frame2)
         cv.imwrite('opticalhsv.png',bgr)
     prvs = next
-    
+
 cap.release()
 cv.destroyAllWindows()
 ```
@@ -157,4 +149,3 @@ cv.destroyAllWindows()
 ![image8](https://docs.opencv.org/4.0.0/opticalfb.jpg)
 
 OpenCV 的官方示例中有一个更高级的稠密光流算法，具体请参阅/samples/python2/opt_flow.py。
-
