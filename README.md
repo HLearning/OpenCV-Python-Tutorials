@@ -1,4 +1,4 @@
-OpenCV4.0于2018年11月，针对[OpenCV-Python Tutorials(4.0.0)](https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html)进行了翻译， 如果这个项目对你有帮助， 请STAR该项目。
+2018年11月，OpenCV发布了4.0版本，为方便学习，对[OpenCV-Python Tutorials(4.0.0)](https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html)进行了翻译， 如果这个项目对你有帮助， 请STAR该项目。
 
 
 * [1. OpenCV简介]( )
