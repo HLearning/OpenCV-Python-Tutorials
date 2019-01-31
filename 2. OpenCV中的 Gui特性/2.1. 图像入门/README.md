@@ -1,7 +1,7 @@
 ## 目标：
-- 在本节中，你将学会如何读取、显示以及保存图像。
-- 学习以下几个函数：`cv.imread()`, `cv.imshow() `, `cv.imwrite()`
-- 学会用Matplotlib来显示图像
+- 学会如何读取、显示以及保存图像。
+- 学习函数：`cv.imread()`, `cv.imshow() `, `cv.imwrite()`
+- 用Matplotlib显示图像
 
 ## OpenCV的使用
 ## 读取图像
@@ -9,6 +9,7 @@
 - cv.IMREAD_COLOR：默认参数，以彩色模式加载图像，图像的透明度将被忽略。
 - cv.IMREAD_GRAYSCALE：以灰度模式加载图像。
 - cv.IMREAD_UNCHANGED：以alpha通道模式加载图像。
+
 > 注意：你也可以通过传递1，0，-1来代替上面三个函数功能。
 
 参考代码：

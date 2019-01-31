@@ -1,6 +1,6 @@
 ## 目标：
-- 在本小节你将学习把滑动条绑定到OpenCV窗口中
-- 你将学习以下几个函数：`cv.getTrackbarPos()`, `cv.createTrackbar()`
+- 学习把滑动条绑定到OpenCV窗口中
+- 学习以下函数：`cv.getTrackbarPos()`, `cv.createTrackbar()`
 
 ## 代码示例
 在这里，我们将创建一个简单的应用程序，完成显示指定的颜色。你有一个显示颜色的窗口和三个滑动条，分别用于指定B，G，R各颜色。你可以去拖动滑动条上的按钮去更改窗口所显示的颜色。默认情况下，初始颜色将设置为黑色。
@@ -50,4 +50,3 @@ cv.destroyAllWindows()
 窗口将如下图所示：
 
 ![image4](https://docs.opencv.org/4.0.0/trackbar_screenshot.jpg)
-
