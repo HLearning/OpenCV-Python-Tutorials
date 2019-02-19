@@ -1,8 +1,6 @@
 ## 目标：
-
-本章节你需要学习以下内容:
-- 你将学习简单的阈值处理，自适应阈值处理，Otsu的阈值处理等。
-- 你将学习以下函数：cv.threshold，cv.adaptiveThreshold等。
+- 学习简单的阈值处理，自适应阈值处理，Otsu的阈值处理等
+- 学习函数：`cv.threshold`，`cv.adaptiveThreshold`等
 
 ## 简单阈值处理
 
