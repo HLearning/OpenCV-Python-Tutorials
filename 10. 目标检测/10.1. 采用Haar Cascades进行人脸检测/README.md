@@ -1,6 +1,6 @@
 ## 目标 
 - 使用基于Haar特征的级联分类器进行人脸检测
-- 把它扩展到眼睛检测等领域。
+- 把它扩展到眼睛检测等领域
 
 ## 基础
 基于Haar特征的级联分类器进行目标检测是Paul Viola和Michael Jones在2001年发表的论文《Rapid Object Detection using a Boosted Cascade of Simple Features》中提出的一种有效的目标检测方法。它基于机器学习的方法，由大量的正负样本图像训练级联函数，然后用于检测其他图像中的对象。

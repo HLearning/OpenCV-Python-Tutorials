@@ -1,7 +1,6 @@
 ## 目标：
-本章节你需要学习以下内容:
 - 查找图像渐变，边缘等
-- 我们将看到以下函数：cv.Sobel()，cv.Scharr()，cv.Laplacian()等
+- 学习函数：`cv.Sobel()`，`cv.Scharr()`，`cv.Laplacian()`等
 
 ## 理论
 

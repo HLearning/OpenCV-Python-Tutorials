@@ -1,13 +1,12 @@
 ## 目标：
-本章节你需要学习以下内容:
-- 我们将学习使用Hough变换来查找图像中的圆圈。
-- 我们将看到这些函数：cv.HoughCircles()
+- 学习使用Hough变换来查找图像中的圆圈
+- 函数：`cv.HoughCircles()`
 
-##  理论
+## 理论
 
-圆圈在数学上表示为$\left ( x-x_{center} \right )^{2}+\left ( y-y_{center} \right )^{2}=r^{2}$其中$\left ( x_{center},y_{center} \right )$是圆的中心，r是圆的半径。从等式中，我们可以看到我们有3个参数，因此我们需要一个用于霍夫变换的3D累加器，这将非常无效。 因此，OpenCV使用更棘手的方法，Hough Gradient Method，它使用边缘的梯度信息。
+圆圈在数学上表示为 $$\left ( x-x_{center} \right )^{2}+\left ( y-y_{center} \right )^{2}=r^{2} $$ 其中 $$ \left ( x_{center},y_{center} \right ) $$是圆的中心，r是圆的半径。从等式中，我们可以看到我们有3个参数，因此我们需要一个用于霍夫变换的3D累加器，这将非常无效。 因此，OpenCV使用更棘手的方法，Hough Gradient Method，它使用边缘的梯度信息。
 
-我们在这里使用的函数是cv.HoughCircles（）。它有很多论据，在文档中有很好的解释。所以我们直接转到代码。
+我们在这里使用的函数是`cv.HoughCircles（）。它有很多论据，在文档中有很好的解释。所以我们直接转到代码。
 
 ```python
 import numpy as np
