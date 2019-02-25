@@ -1,20 +1,15 @@
 ## 目标：
-- 查找图像渐变，边缘等
-- 学习函数：`cv.Sobel()`，`cv.Scharr()`，`cv.Laplacian()`等
+- 查找图像梯度，边缘等
+- 学习函数：`cv.Sobel()`，`cv.Scharr()`，`cv.Laplacian()`
 
 ## 理论
+OpenCV提供三种类型的梯度滤波器或高通滤波器，Sobel，Scharr和Laplacian。
 
-OpenCV提供三种类型的梯度滤波器或高通滤波器，Sobel，Scharr和Laplacian。我们会一一介绍他们。
+### 1. Sobel和Scharr
+Sobel算子是高斯联合平滑加微分运算，因此它更能抵抗噪声。你可以指定要采用的导数的方向，垂直或水平（yorder和xorder），你还可以通过参数ksize指定卷积核的大小。如果ksize = -1，则使用3x3的Scharr滤波器，其结果优于3x3的Sobel滤波器。请参阅所用卷积核的文档。
 
-Sobel，Scharr 其实就是求一阶或二阶导数。Scharr是对Sobel（使用小的卷积核求解求解梯度角度时）的优化。Laplacian 是求二阶导数。
-
-### Sobel算子和Scharr算子
-
-Sobel算子是高斯联合平滑加微分运算，因此它更能抵抗噪声。你可以指定要采用的导数的方向，垂直或水平（分别通过参数，yorder和xorder），你还可以通过参数ksize指定卷积核的大小。如果ksize = -1，则使用3x3的Scharr滤波器，其结果优于3x3的Sobel滤波器。请参阅所用卷积核的文档。
-
-### Laplacian算子
-
-它计算由关系给出的图像的拉普拉斯算子，$\Delta src= \frac{\partial ^{2}src}{\partial x^{2}}+ \frac{\partial ^{2}src}{\partial y^{2}}$，其中使用Sobel导数找到每个导数。 如果ksize = 1，则使用以下卷积核进行过滤：
+### 2. Laplacian算子
+它的计算由关系给出的图像的拉普拉斯（Laplacian）算子，$$ \Delta src= \frac{\partial ^{2}src}{\partial x^{2}}+ \frac{\partial ^{2}src}{\partial y^{2}} $$，其中使用Sobel导数找到每个导数。 如果ksize = 1，则使用以下卷积核进行过滤：
 
 $$kernel=\begin{bmatrix}
 \ 0\ \ \ \ 1\ \ \ \ 0\\ 

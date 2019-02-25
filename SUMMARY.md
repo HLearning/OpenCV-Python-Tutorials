@@ -19,7 +19,7 @@
   * [4.3. 图像阈值](4. OpenCV中的图像处理/4.3. 图像阈值/README.md)
   * [4.4. 图像滤波](4. OpenCV中的图像处理/4.4. 图像滤波/README.md)
   * [4.5. 形态变换](4. OpenCV中的图像处理/4.5. 形态变换/README.md)
-  * [4.6. 图形渐变](4. OpenCV中的图像处理/4.6. 图形渐变/README.md)
+  * [4.6. 图形梯度](4. OpenCV中的图像处理/4.6. 图形梯度/README.md)
   * [4.7. Canny边缘检测](4. OpenCV中的图像处理/4.7. Canny边缘检测/README.md)
   * [4.8. 图像金字塔](4. OpenCV中的图像处理/4.8. 图像金字塔/README.md)
   * [4.9. OpenCV中的轮廓](4. OpenCV中的图像处理/4.9. OpenCV中的轮廓/README.md)
