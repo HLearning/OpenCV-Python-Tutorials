@@ -1,8 +1,7 @@
 ## 目标：
 
-本章节你需要学习以下内容:
 - 使用模板匹配查找图像中的对象
-- 你将看到以下函数：cv.matchTemplate（），cv.minMaxLoc（）
+- 函数：`cv.matchTemplate()`，`cv.minMaxLoc()`
     
 ## 理论
 
