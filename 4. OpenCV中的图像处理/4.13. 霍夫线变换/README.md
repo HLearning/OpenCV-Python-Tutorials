@@ -4,9 +4,9 @@
 - 函数：`cv.HoughLines()`，`cv.HoughLinesP()`
 
 ## 理论
-如果你能够以数学形式表示该形状，则霍夫变换是一种检测任何形状的流行技术。它可以检测形状，即使它被破坏或扭曲一点点。我们将看到它如何适用于生产线。
+霍夫变换是一种流行的检测形状的技术，如果你可以用数学形式表示形状的话。它可以检测形状，即使它是破碎或扭曲了一点。我们来看看它是如何作用于直线的。
 
-线可以表示为$$ y=mx+c $$或以参数形式表示为$$ \rho =x\ cos\theta +y\ sin\theta $$其中$$ \rho $$是从原点到线的垂直距离，$$ \theta $$是由该垂直线和水平轴形成的角度 以逆时针方向测量（该方向因你表示坐标系的方式而异。此表示在OpenCV中使用）。检查下图：
+线可以表示为$$ y=mx+c $$或以参数形式表示为$$ \rho =x\ cos\theta +y\ sin\theta $$其中$$ \rho $$是从原点到线的垂直距离，$$ \theta $$是由该垂直线和水平轴形成的角度 以逆时针方向测量（该方向因你表示坐标系的方式而异。此表示在OpenCV中使用）。如图：
 
 ![image69](https://raw.githubusercontent.com/TonyStark1997/OpenCV-Python/master/4.Image%20Processing%20in%20OpenCV/Image/image69.png)
 
@@ -26,7 +26,7 @@
 
 ## OpenCV中的霍夫变换
 
-上面解释的所有内容都封装在OpenCV函数cv.HoughLines（）中。 它只返回一个数组：math：（rho，theta）`values。$$ \rho $$以像素为单位测量，$$ \theta $$以弧度为单位测量。第一个参数，输入图像应该是二进制图像，因此在应用霍夫变换之前应用阈值或使用精确边缘检测。 第二和第三参数分别是$\rho$和$\theta$精度。第四个参数是阈值，这意味着它应该被视为一条线的最小投票。请记住，投票数取决于该线上的点数。因此它表示应检测的最小行长度。
+上面解释的所有内容都封装在OpenCV函数`cv.HoughLines（）`中。 它只返回一个数组：math：（rho，theta）`values。$$ \rho $$以像素为单位测量，$$ \theta $$以弧度为单位测量。第一个参数，输入图像应该是二进制图像，因此在应用霍夫变换之前应用阈值或使用精确边缘检测。 第二和第三参数分别是$$\rho$$和$$\theta$$精度。第四个参数是阈值，这意味着它应该被视为一条线的最小投票。请记住，投票数取决于该线上的点数。因此它表示应检测的最小行长度。
 
 ```python
 import cv2 as cv
@@ -59,7 +59,7 @@ cv.imwrite('houghlines3.jpg',img)
 
 ![image73](https://docs.opencv.org/4.0.0/houghlines4.png)
 
-OpenCV实现基于使用Matas，J。和Galambos，C。和Kittler，J.V。[122]的渐进概率Hough变换的线的鲁棒检测。 使用的函数是`cv.HoughLinesP（）`。 它有两个新的论点。
+OpenCV实现基于使用Matas，J。和Galambos，C。和Kittler，J.V。[122]的渐进概率Hough变换的线的鲁棒检测。 使用的函数是`cv.HoughLinesP()`。 它有两个新的论点。
 
 * minLineLength - 最小线长。 短于此的线段将被拒绝。
 * maxLineGap - 线段之间允许的最大间隙，将它们视为一条线。
