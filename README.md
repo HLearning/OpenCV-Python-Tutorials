@@ -1,7 +1,13 @@
 2018年11月，OpenCV发布了4.0版本，为方便学习，对[OpenCV-Python Tutorials(4.0.0)](https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html)进行了翻译， 如果这个项目对你有帮助， 请STAR该项目。
 
 
-* [1. OpenCV简介]( )
+## OpenCV-Python Tutorials(4.0.0)
+[OpenCV-Python Tutorials官方英文教程](https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html)
+[GitHub：中文翻译](https://github.com/HLearning/OpenCV-Python-Tutorials)
+如果对你有帮助， 请在[GitHub](https://github.com/HLearning/OpenCV-Python-Tutorials)上Star该项目， 转载请注明出处。
+
+
+* [x] [1. OpenCV简介]( )
   * [x] [1.1 OpenCV-Python教程介绍]( )
 * [x] [2. OpenCV中的 Gui特性]( )
   * [x] [2.1. 图像入门]( )
@@ -13,7 +19,7 @@
   * [x] [3.1. 图像的基本操作]( )
   * [x] [3.2. 图像的算术运算]( )
   * [x] [3.3. 绩效评估和改进技术]( )
-* [4. OpenCV中的图像处理]( )
+* [x] [4. OpenCV中的图像处理]( )
   * [x] [4.1. 改变颜色空间]( )
   * [x] [4.2. 图像的几何变换]( )
   * [x] [4.3. 图像阈值]( )
@@ -28,12 +34,12 @@
     * [x] [4.9.3. 轮廓属性]( )
     * [x] [4.9.4. 轮廓：更多函数]( )
     * [x] [4.9.5. 轮廓：层次结构]( )
-  * [4.10. OpenCV中的直方图]( )
+  * [x] [4.10. OpenCV中的直方图]( )
     * [x] [4.10.1 直方图1：发现，绘画，分析]( )
     * [x] [4.10.2 直方图2：均衡直方图]( )
     * [x] [4.10.3. 直方图3：2D直方图]( )
     * [x] [4.10.4. 反投影直方图]( )
-  * [4.11. OpenCV中的图像变换]( )
+  * [x] [4.11. OpenCV中的图像变换]( )
     * [x] [4.11.1 傅里叶变换]( )
   * [x] [4.12. 模板匹配]( )
   * [x] [4.13. 霍夫线变换]( )
@@ -51,7 +57,7 @@
   * [5.8. ORB(Oriented FAST and Rotated BRIEF)]( )
   * [5.9. 特征匹配]( )
   * [5.10. 特征匹配结合单应性去查找对象]()
-* [6. 视频分析]( )
+* [x] [6. 视频分析]( )
   * [x] [6.1. Meanshift和Camshift]( )
   * [x] [6.2. 光流]( )
   * [x] [6.3. 背景差法]( )
