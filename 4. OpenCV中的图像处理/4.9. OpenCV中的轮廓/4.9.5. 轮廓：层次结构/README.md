@@ -1,7 +1,3 @@
-
-
-## 轮廓层次结构
-
 ## 理论
 
 在最近几篇关于轮廓的文章中，我们使用了与OpenCV提供的轮廓相关的几个函数。但是当我们使用cv.findContours()函数在图像中找到轮廓时，我们已经传递了一个参数Contour Retrieval Mode。我们通常传递cv.RETR_LIST或cv.RETR_TREE，它运行的效果很好。但它究竟意味着什么？
