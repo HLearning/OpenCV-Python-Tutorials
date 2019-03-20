@@ -1,12 +1,8 @@
-### 目标：
-
-本章节你需要学习以下内容:
-
-    *我们将了解Harris Corner Detection背后的概念。
-    *我们将看到函数：cv.cornerHarris()，cv.cornerSubPix()
+## 目标：
+- 我们将了解Harris Corner Detection背后的概念。
+- 我们将看到函数：`cv.cornerHarris()`，`cv.cornerSubPix()`
     
-### 1、理论
-
+## 理论
 在上一节我们已经知道了角点的一个特性：向任何方向移动变化都很大。Chris_Harris 和 Mike_Stephens 早在 1988 年的文章《A CombinedCorner and Edge Detector》中就已经提出了焦点检测的方法，被称为Harris 角点检测。他把这个简单的想法转换成了数学形式。将窗口向各个方向移动（u，v）然后计算所有差异的总和。表示如下：
 
 $$E(u,v) = \sum_{x,y} \underbrace{w(x,y)}_\text{window function} \, [\underbrace{I(x+u,y+v)}_\text{shifted intensity}-\underbrace{I(x,y)}_\text{intensity}]^2$$
@@ -21,7 +17,7 @@ $$E(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \e
 
 $$M = \sum_{x,y} w(x,y) \begin{bmatrix}I_x I_x & I_x I_y \\ I_x I_y & I_y I_y \end{bmatrix}$$
 
-这里，$I_x$和$I_y$分别是x和y方向上的图像导数。（可以使用函数cv.Sobel()轻松找到）。
+这里，$$I_x$$和$$I_y$$分别是x和y方向上的图像导数。（可以使用函数cv.Sobel()轻松找到）。
 
 然后是主要部分。在此之后，他们创建了一个分数，基本上是一个等式，它将确定一个窗口是否可以包含一个角点。
 
@@ -29,9 +25,9 @@ $$R = det(M) - k(trace(M))^2$$
 
 其中：
 
-* $R = det(M) - k(trace(M))^2$
-* $trace(M) = \lambda_1 + \lambda_2$
-* $\lambda_1$和$\lambda_2$是M的本征值
+* $$R = det(M) - k(trace(M))^2$$
+* $$trace(M) = \lambda_1 + \lambda_2$$
+* $$\lambda_1$$和$$\lambda_2$$是M的本征值
 
 因此，这些特征值的值决定区域是角点，边缘还是平坦。
 
@@ -45,7 +41,7 @@ $$R = det(M) - k(trace(M))^2$$
 
 因此Harris角点检测的结果是一个由角点分数构成的灰度图像。选取适当的阈值对结果图像进行二值化我们就检测到了图像中的角点。我们将用一个简单的图片来演示一下。
 
-### 2、OpenCV中的Harris角点探测器
+## OpenCV中的Harris角点探测器
 
 为此，OpenCV具有函数cv.cornerHarris()。它的参数是：
 
@@ -82,7 +78,7 @@ if cv.waitKey(0) & 0xff == 27:
 
 ![image4](https://raw.githubusercontent.com/TonyStark1997/OpenCV-Python/master/5.Feature%20Detection%20and%20Description/Image/image4.jpg)
 
-### 3、具有亚像素精度的角点
+## 具有亚像素精度的角点
 
 有时，你可能需要以最高精度找到角点。OpenCV附带了一个函数cv.cornerSubPix()，它进一步细化了以亚像素精度检测到的角点。以下是一个例子。像往常一样，我们需要先找到Harris的角点。然后我们传递这些角的质心（角点处可能有一堆像素，我们采用它们的质心）来细化它们。Harris角以红色像素标记，精致角以绿色像素标记。对于此函数，我们必须定义何时停止迭代的标准。我们在指定的迭代次数或达到一定精度后停止它，以先发生者为准。我们还需要定义它将搜索角点的邻域大小。
 
