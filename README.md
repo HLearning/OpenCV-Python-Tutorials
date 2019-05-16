@@ -4,8 +4,8 @@
 - 如果对你有帮助， 请在[GitHub](https://github.com/HLearning/OpenCV-Python-Tutorials)上Star该项目， 转载请注明出处。
 
 
-* [x] [1. OpenCV简介]( )
-  * [x] [1.1 OpenCV-Python教程介绍]( )
+* [x] [1. OpenCV简介](https://github.com/HLearning/OpenCV-Python-Tutorials/tree/master/1.%20OpenCV%E7%AE%80%E4%BB%8B)
+  * [x] [1.1 OpenCV-Python教程介绍](https://github.com/HLearning/OpenCV-Python-Tutorials/tree/master/1.%20OpenCV%E7%AE%80%E4%BB%8B/1.1.%20OpenCV-Python%E6%95%99%E7%A8%8B%E4%BB%8B%E7%BB%8D)
 * [x] [2. OpenCV中的 Gui特性]( )
   * [x] [2.1. 图像入门]( )
   * [x] [2.2. 视频入门]( )
