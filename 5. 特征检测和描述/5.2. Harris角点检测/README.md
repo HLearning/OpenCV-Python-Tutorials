@@ -1,6 +1,6 @@
 ## 目标：
-- 我们将了解Harris Corner Detection背后的概念。
-- 我们将看到函数：`cv.cornerHarris()`，`cv.cornerSubPix()`
+- 我了解Harris Corner Detection背后的概念。
+- 函数：`cv.cornerHarris()`，`cv.cornerSubPix()`
     
 ## 理论
 在上一节我们已经知道了角点的一个特性：向任何方向移动变化都很大。Chris_Harris 和 Mike_Stephens 早在 1988 年的文章《A CombinedCorner and Edge Detector》中就已经提出了焦点检测的方法，被称为Harris 角点检测。他把这个简单的想法转换成了数学形式。将窗口向各个方向移动（u，v）然后计算所有差异的总和。表示如下：
