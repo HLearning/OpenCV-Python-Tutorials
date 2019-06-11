@@ -1,5 +1,5 @@
 ## 目标：
-- 我们将了解另一个角点探测器：Shi-Tomasi角点探测器
+- 了解另一个角点探测器：Shi-Tomasi角点探测器
 - 函数：`cv.goodFeaturesToTrack()`
     
 ## 理论

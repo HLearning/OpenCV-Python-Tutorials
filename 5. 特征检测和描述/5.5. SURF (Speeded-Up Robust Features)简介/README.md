@@ -1,6 +1,6 @@
 ## 目标：
-- 我们将看到SURF的基础知识
-- 我们将在OpenCV中看到SURF功能
+- SURF的基础知识
+- 在OpenCV中看到SURF功能
     
 ## 理论
 
